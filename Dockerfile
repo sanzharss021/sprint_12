@@ -16,6 +16,6 @@ FROM alpine:latest
 
 WORKDIR /app 
 
-COPY --from=builder /app/main . 
+COPY --from=builder /app/main /app/ 
 
 COPY tracker.db . CMD ["./main"]
