@@ -1,6 +1,8 @@
-FROM golang:1.24-alpine AS builder 
+FROM golang:1.23.3-alpine AS builder 
 
-WORKDIR /app COPY go.mod . 
+WORKDIR /app 
+
+COPY go.mod . 
 
 COPY go.sum . 
 
