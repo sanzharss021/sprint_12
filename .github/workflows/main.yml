@@ -5,7 +5,7 @@ on:
     branches:
       - main
     tags:
-      - 'v*.*.*' 
+      - 'v*.*.*'
   pull_request:
     branches:
       - main
@@ -20,7 +20,7 @@ jobs:
       - name: Настройка Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.24' 
+          go-version: '1.24'
 
       - name: Загрузка зависимостей
         run: go mod download
@@ -30,7 +30,6 @@ jobs:
 
       - name: Проверка кода (Go Vet)
         run: go vet ./...
-
 
   publish:
     needs: test
@@ -46,15 +45,14 @@ jobs:
       - name: Вход в Docker Hub
         uses: docker/login-action@v3
         with:
-         
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Извлечение метаданных 
+      - name: Извлечение метаданных
         id: meta
         uses: docker/metadata-action@v5.5.1
         with:
-          images: <sanzharss>/parcel-tracker
+          images: sanzharss/parcel-tracker
 
       - name: Сборка и публикация Docker-образа
         uses: docker/build-push-action@v5
