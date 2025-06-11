@@ -18,4 +18,6 @@ WORKDIR /app
 
 COPY --from=builder /app/main /app/ 
 
-COPY tracker.db . CMD ["./main"]
+COPY tracker.db . 
+
+CMD ["./main"]
